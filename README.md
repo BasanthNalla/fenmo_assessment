@@ -393,33 +393,6 @@ vercel
 # Set VITE_API_URL environment variable to production API URL
 ```
 
-### Docker Deployment (Optional)
-
-Create Docker files for containerized deployment:
-
-**Backend Dockerfile:**
-```dockerfile
-FROM python:3.11-slim
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-COPY . .
-CMD ["gunicorn", "expense_project.wsgi"]
-```
-
-**Frontend Dockerfile:**
-```dockerfile
-FROM node:18 AS build
-WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm install
-COPY . .
-RUN npm run build
-
-FROM nginx:alpine
-COPY --from=build /app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-```
 
 ## Important Notes
 
