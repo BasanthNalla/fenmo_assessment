@@ -1,0 +1,97 @@
+.app-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.app-header {
+  color: white;
+  margin-bottom: 40px;
+  padding-top: 20px;
+}
+
+.app-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.current-datetime {
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 12px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #f8f8ff;
+  white-space: nowrap;
+  align-self: center;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  opacity: 0.95;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.app-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.success-message {
+  background-color: #4caf50;
+  color: white;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  animation: slideDown 0.3s ease-out;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    padding: 10px;
+  }
+
+  .app-header {
+    margin-bottom: 30px;
+    padding-top: 10px;
+  }
+
+  .app-header-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .current-datetime {
+    width: 100%;
+    text-align: left;
+  }
+
+  .app-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+  }
+}

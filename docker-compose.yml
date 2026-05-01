@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  # Django Backend
+  backend:
+    build:
+      context: ./expense_backend
+      dockerfile: Dockerfile
+    container_name: expense_backend
+    command: >
+      sh -c "python manage.py migrate &&
+             gunicorn --bind 0.0.0.0:8000 --workers 4 expense_project.wsgi:application"
+    environment:
+      DEBUG: ${DEBUG:-False}
+      SECRET_KEY: ${SECRET_KEY:-django-insecure-change-me-in-production}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS:-localhost,127.0.0.1,backend}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./expense_backend:/app
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/expenses/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # React Frontend
+  frontend:
+    build:
+      context: ./expense_frontend
+      dockerfile: Dockerfile
+    container_name: expense_frontend
+    ports:
+      - "80:80"
+      - "3000:80"
+    depends_on:
+      - backend
+    environment:
+      VITE_API_URL: http://localhost:8000/api
+    volumes:
+      - ./expense_frontend/nginx.conf:/etc/nginx/conf.d/default.conf
+
+networks:
+  default:
+    name: expense_network
