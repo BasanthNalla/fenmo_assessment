@@ -99,7 +99,7 @@ REST_FRAMEWORK = {
 # ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://fenmo-assessment-pjo7bat3t-basanth-s-projects.vercel.app",
+    "https://fenmo-assessment-ndc5vbrg3-basanth-s-projects.vercel.app/",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
