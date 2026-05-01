@@ -12,7 +12,7 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-your-secret-key-chang
 
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = ['fenmo-assessment-c59f.onrender.com']
+ALLOWED_HOSTS = ['fenmo-assessment-j8t4.onrender.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
